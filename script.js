@@ -17,15 +17,15 @@ function divide(a, b) {
 function operate(operator, a, b){
 	switch (operator) {
 		case '+':
-			return add(parseInt(a), parseInt(b));
+			return add(parseFloat(a), parseFloat(b));
 		case '-':
-			return substract(parseInt(a), parseInt(b));
+			return substract(parseFloat(a), parseFloat(b));
 		case '*':
-			return multiply(parseInt(a), parseInt(b));
+			return multiply(parseFloat(a), parseFloat(b));
 		case '/':
-			return divide(parseInt(a), parseInt(b));
+			return divide(parseFloat(a), parseFloat(b));
 		case '':
-			return parseInt(b);
+			return parseFloat(b);
 	}
 }
 
@@ -33,6 +33,7 @@ let value = 0;
 let op = '';
 let display = ""
 let calcDisplay = document.querySelector('#display');
+let fp = false;
 
 const calculator = document.querySelector('#calculator');
 for(let i=0; i<10; i++) {
@@ -57,6 +58,7 @@ for (let i=0; i<opButtons.length; i++) {
 		value = operate(op, value, display);
 		op = event.target.textContent;
 		display = "";
+		fp = false;
 		calcDisplay.textContent = value;
 	});
 }
@@ -66,6 +68,7 @@ eqButton.addEventListener('click', () => {
 	display = operate(op, value, display);
 	op = '';
 	value = 0;
+	fp = false;
 	calcDisplay.textContent = display;
 });
 
@@ -74,5 +77,15 @@ clearButton.addEventListener('click', () => {
 	display = "";
 	op = '';
 	value = 0;
-	calcDisplay.textContent = '\n';
+	fp = false;
+	calcDisplay.textContent = '';
+});
+
+let fpButton = document.querySelector('.fp');
+fpButton.addEventListener('click', () => {
+	if (!fp) {
+		display += '.';
+		fp = true;
+		calcDisplay.textContent = display;
+	}
 });
