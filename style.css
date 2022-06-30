@@ -9,6 +9,7 @@
 
 #display {
 	grid-row: 1;
+	grid-column: 1 / 5;
 	align-self: center;
 	font-size: 1.4em;
 }
