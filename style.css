@@ -1,0 +1,41 @@
+#calculator {
+	display: grid;
+	grid-template-rows: 2fr, repeat(5, 1fr);
+	gap: 10px;
+	grid-template-columns: repeat(4, 1fr);
+	width: 400px;
+	height: 500px;
+}
+
+#display {
+	grid-row: 1;
+	align-self: center;
+}
+
+.clear {
+	grid-column: 1 / 4;
+}
+
+.divide {
+	grid-column: 4;
+	grid-row: 2;
+	background-color: orange;
+}
+
+.times {
+	grid-column: 4;
+	grid-row: 3;
+	background-color: orange;
+}
+
+.minus {
+	grid-column: 4;
+	grid-row: 4;
+	background-color: orange;
+}
+
+.plus {
+	grid-column: 4;
+	grid-row: 5;
+	background-color: orange;
+}
