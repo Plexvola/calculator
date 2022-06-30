@@ -17,19 +17,22 @@ function divide(a, b) {
 function operate(operator, a, b){
 	switch (operator) {
 		case '+':
-			return add(a, b)
+			return add(parseInt(a), parseInt(b));
 		case '-':
-			return substract(a, b)
+			return substract(parseInt(a), parseInt(b));
 		case '*':
-			return multiply(a, b)
+			return multiply(parseInt(a), parseInt(b));
 		case '/':
-			return divide(a, b)
+			return divide(parseInt(a), parseInt(b));
+		case '':
+			return parseInt(b);
 	}
 }
 
-let value;
+let value = 0;
 let op = '';
 let display = ""
+let calcDisplay = document.querySelector('#display');
 
 const calculator = document.querySelector('#calculator');
 for(let i=0; i<10; i++) {
@@ -40,9 +43,28 @@ for(let i=0; i<10; i++) {
 	calculator.appendChild(button);
 }
 
-let buttons = document.querySelectorAll('.number');
-for (let i=0; i<buttons.length; i++) {
-	buttons[i].addEventListener('click', (event) => {
+let nbButtons = document.querySelectorAll('.number');
+for (let i=0; i<nbButtons.length; i++) {
+	nbButtons[i].addEventListener('click', (event) => {
 		display += event.target.textContent;
+		calcDisplay.textContent = display;
 	});
 }
+
+let opButtons = document.querySelectorAll('.op');
+for (let i=0; i<opButtons.length; i++) {
+	opButtons[i].addEventListener('click', (event) => {
+		value = operate(op, value, display)
+		op = event.target.textContent;
+		display = "";
+		calcDisplay.textContent = value;
+	});
+}
+
+let eqButton = document.querySelector('.equals');
+eqButton.addEventListener('click', () => {
+	display = operate(op, value, display)
+	op = '';
+	value = 0;
+	calcDisplay.textContent = display;
+});
