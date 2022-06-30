@@ -54,7 +54,7 @@ for (let i=0; i<nbButtons.length; i++) {
 let opButtons = document.querySelectorAll('.op');
 for (let i=0; i<opButtons.length; i++) {
 	opButtons[i].addEventListener('click', (event) => {
-		value = operate(op, value, display)
+		value = operate(op, value, display);
 		op = event.target.textContent;
 		display = "";
 		calcDisplay.textContent = value;
@@ -63,8 +63,16 @@ for (let i=0; i<opButtons.length; i++) {
 
 let eqButton = document.querySelector('.equals');
 eqButton.addEventListener('click', () => {
-	display = operate(op, value, display)
+	display = operate(op, value, display);
 	op = '';
 	value = 0;
 	calcDisplay.textContent = display;
+});
+
+let clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+	display = "";
+	op = '';
+	value = 0;
+	calcDisplay.textContent = '\n';
 });
