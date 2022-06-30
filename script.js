@@ -26,3 +26,11 @@ function operate(operator, a, b){
 			return divide(a, b)
 	}
 }
+
+const calculator = document.querySelector('#calculator');
+for(let i=0; i<10; i++) {
+	let button = document.createElement('button');
+	button.classList.add(i);
+	button.textContent = i;
+	calculator.appendChild(button);
+}
